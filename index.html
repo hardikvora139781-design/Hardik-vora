@@ -1,0 +1,697 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Marwadi University courses, vision, mission, outcomes and campus events.">
+    <title>Marwadi University | Education & Innovation</title>
+
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        :root {
+            --green: #006600;
+            --dark-green: #004d00;
+            --light-green: #eaf5ea;
+            --white: #ffffff;
+            --text: #333333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            background: #f5f7f5;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 12px #00000012;
+        }
+
+        .logo {
+            color: var(--green);
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: none;
+            background: var(--green);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            padding: 70px 8%;
+            color: white;
+            background:
+                linear-gradient(90deg, #003d00e8, #003d0066),
+                url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1800&q=85")
+                center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffffff;
+            color: var(--green);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--light-green);
+            transform: translateY(-2px);
+        }
+
+        /* Common section styles */
+        .section {
+            padding: 65px 8%;
+        }
+
+        .light {
+            background: white;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            color: var(--green);
+            font-size: clamp(25px, 3vw, 34px);
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            max-width: 700px;
+            margin: auto;
+            color: #666;
+        }
+
+        .section-heading::after {
+            content: "";
+            display: block;
+            width: 65px;
+            height: 4px;
+            background: var(--green);
+            margin: 15px auto 0;
+            border-radius: 5px;
+        }
+
+        /* Vision and mission */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .vision-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 4px solid var(--green);
+            box-shadow: 0 5px 20px #0000000c;
+        }
+
+        .vision-card .icon {
+            font-size: 32px;
+        }
+
+        .vision-card h3 {
+            color: var(--green);
+            margin: 10px 0;
+            font-size: 23px;
+        }
+
+        /* Program outcomes */
+        .outcome-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .outcome-card {
+            padding: 25px;
+            background: var(--light-green);
+            border-radius: 10px;
+            border: 1px solid #d5e8d5;
+            transition: 0.3s;
+        }
+
+        .outcome-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px #00000012;
+        }
+
+        .outcome-card h3 {
+            color: var(--green);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Courses */
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .course-card {
+            background: white;
+            padding: 28px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px #00000010;
+            border-bottom: 4px solid var(--green);
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px #00000018;
+        }
+
+        .course-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .course-card h3 {
+            color: var(--green);
+            margin-bottom: 10px;
+        }
+
+        .course-card p {
+            font-size: 14px;
+        }
+
+        /* Event gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px #00000012;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-item h3 {
+            color: var(--green);
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        /* Recruiters */
+        .recruiter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .recruiter {
+            display: grid;
+            place-items: center;
+            min-height: 85px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e5e5e5;
+            color: var(--green);
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 12px #00000008;
+        }
+
+        /* Contact section */
+        .contact-box {
+            text-align: center;
+            background: var(--light-green);
+            padding: 35px 20px;
+            border-radius: 12px;
+        }
+
+        .contact-box h3 {
+            color: var(--green);
+            margin-bottom: 12px;
+        }
+
+        .contact-box p {
+            margin: 6px 0;
+        }
+
+        .contact-box a {
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #003d00;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #c9efc9;
+        }
+
+        /* Tablet responsive layout */
+        @media (max-width: 1000px) {
+            .course-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .outcome-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            nav {
+                padding: 15px 4%;
+            }
+        }
+
+        /* Mobile responsive navigation */
+        @media (max-width: 760px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                gap: 0;
+                padding-top: 12px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 11px 5px;
+                border-bottom: 1px solid #eeeeee;
+            }
+
+            .hero {
+                min-height: 400px;
+                padding: 55px 7%;
+            }
+
+            .section {
+                padding: 45px 6%;
+            }
+
+            .vision-grid,
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery img {
+                height: 250px;
+            }
+
+            .recruiter-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 450px) {
+            .course-container,
+            .outcome-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+        }
+
+        /* Respect reduced-motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a class="logo" href="#home">🎓 MARWADI UNIVERSITY</a>
+
+        <button class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="navLinks">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#vision">Vision &amp; Mission</a></li>
+            <li><a href="#outcomes">PSOs</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#recruiters">Recruiters</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <p>WELCOME TO MARWADI UNIVERSITY</p>
+            <h1>Knowledge, Innovation &amp; Excellence</h1>
+            <p>Empowering students with quality education, practical skills,
+               research, and innovation for a brighter future.</p>
+            <a href="#courses" class="btn">Explore Our Courses →</a>
+        </div>
+    </header>
+
+    <!-- Vision and Mission -->
+    <section class="section" id="vision">
+        <div class="section-heading">
+            <h2>Our Vision &amp; Mission</h2>
+            <p>Our commitment to education, innovation, and society.</p>
+        </div>
+
+        <div class="vision-grid">
+            <article class="vision-card">
+                <div class="icon" aria-hidden="true">🌟</div>
+                <h3>Our Vision</h3>
+                <p>To become a globally recognized institution for quality
+                   education, research, innovation, and the development of
+                   responsible citizens.</p>
+            </article>
+
+            <article class="vision-card">
+                <div class="icon" aria-hidden="true">🎯</div>
+                <h3>Our Mission</h3>
+                <p>To provide quality education, promote research, encourage
+                   innovation, and develop socially responsible professionals
+                   capable of addressing global challenges.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Program Specific Outcomes -->
+    <section class="section light" id="outcomes">
+        <div class="section-heading">
+            <h2>Program Specific Outcomes</h2>
+            <p>Skills and abilities students aim to develop through their studies.</p>
+        </div>
+
+        <div class="outcome-grid">
+            <article class="outcome-card">
+                <h3>MU-1: Domain Knowledge</h3>
+                <p>Develop strong programming and problem-solving skills.</p>
+            </article>
+
+            <article class="outcome-card">
+                <h3>MU-2: Engineering Skills</h3>
+                <p>Apply engineering principles to solve real-world problems.</p>
+            </article>
+
+            <article class="outcome-card">
+                <h3>MU-3: Software Development</h3>
+                <p>Design and develop software applications using modern tools.</p>
+            </article>
+
+            <article class="outcome-card">
+                <h3>MU-4: Teamwork &amp; Ethics</h3>
+                <p>Work effectively in teams and follow professional ethics.</p>
+            </article>
+
+            <article class="outcome-card">
+                <h3>MU-5: Lifelong Learning</h3>
+                <p>Engage in continuous learning, research, and development.</p>
+            </article>
+
+            <article class="outcome-card">
+                <h3>MU-6: Communication</h3>
+                <p>Communicate technical ideas clearly and professionally.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="section" id="courses">
+        <div class="section-heading">
+            <h2>Courses Offered</h2>
+            <p>Discover academic fields and opportunities for your future.</p>
+        </div>
+
+        <div class="course-container">
+            <article class="course-card">
+                <div class="course-icon" aria-hidden="true">💻</div>
+                <h3>B.Tech</h3>
+                <p>Bachelor of Technology in Computer Science and Engineering.</p>
+            </article>
+
+            <article class="course-card">
+                <div class="course-icon" aria-hidden="true">🖥️</div>
+                <h3>BCA</h3>
+                <p>Bachelor of Computer Applications.</p>
+            </article>
+
+            <article class="course-card">
+                <div class="course-icon" aria-hidden="true">📊</div>
+                <h3>MBA</h3>
+                <p>Master of Business Administration.</p>
+            </article>
+
+            <article class="course-card">
+                <div class="course-icon" aria-hidden="true">🔬</div>
+                <h3>B.Sc. IT</h3>
+                <p>Bachelor-level study in Information Technology.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Event Gallery -->
+    <section class="section light" id="gallery">
+        <div class="section-heading">
+            <h2>Image Gallery of Events</h2>
+            <p>Campus activities, student experiences, and celebrations.</p>
+        </div>
+
+        <div class="gallery">
+            <article class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=80"
+                    alt="Stage lighting at a cultural event"
+                    loading="lazy">
+                <h3>Cultural Festival</h3>
+            </article>
+
+            <article class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80"
+                    alt="Students participating in a campus activity"
+                    loading="lazy">
+                <h3>Student Activities</h3>
+            </article>
+
+            <article class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80"
+                    alt="Athletes running on a track"
+                    loading="lazy">
+                <h3>Sports Day</h3>
+            </article>
+        </div>
+    </section>
+
+    <!-- Recruiters -->
+    <section class="section" id="recruiters">
+        <div class="section-heading">
+            <h2>Top Recruiters</h2>
+            <p>Examples of organizations known for technology and business careers.</p>
+        </div>
+
+        <div class="recruiter-grid">
+            <div class="recruiter">TCS</div>
+            <div class="recruiter">Infosys</div>
+            <div class="recruiter">Accenture</div>
+            <div class="recruiter">Capgemini</div>
+            <div class="recruiter">Wipro</div>
+            <div class="recruiter">IBM</div>
+            <div class="recruiter">Amazon</div>
+            <div class="recruiter">HCLTech</div>
+        </div>
+
+        <p style="text-align:center; margin-top:18px; font-size:13px; color:#666;">
+            Illustrative list only. Confirm current campus recruitment
+            relationships with the university.
+        </p>
+    </section>
+
+    <!-- Contact -->
+    <section class="section light" id="contact">
+        <div class="section-heading">
+            <h2>Contact Us</h2>
+            <p>Learn more about academic programs and university life.</p>
+        </div>
+
+        <div class="contact-box">
+            <h3>Marwadi University</h3>
+            <p>Rajkot, Gujarat, India</p>
+            <p>Visit the official university website for current admissions
+               and contact information.</p>
+            <p>
+                <a href="https://www.marwadiuniversity.ac.in/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    www.marwadiuniversity.ac.in
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="year">2026</span> Marwadi University Website Concept.</p>
+        <p>Designed for learning | Web Technology Project</p>
+        <p><a href="#home">Back to Top ↑</a></p>
+    </footer>
+
+    <script>
+        // Mobile navigation menu
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("show");
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        // Close the menu after selecting a navigation link
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("show");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // Automatically update the copyright year
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
